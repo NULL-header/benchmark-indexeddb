@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": ["ES6", "DOM", "ES2019"],
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["node_modules/@types", "types"],
     "removeComments": true,
     "resolveJsonModule": true,
     "noImplicitAny": true,
@@ -15,11 +15,7 @@
     "jsx": "react",
     "rootDir": ".",
     "baseUrl": ".",
-    "sourceMap": true,
-    "paths": {
-      "frontend/*": ["*", "src/frontend/*"],
-      "backend/*": ["*", "src/backend/*"]
-    }
+    "sourceMap": true
   },
   "include": ["./**/*.ts*", "./**/*.js", "./**/.*.ts", "./**/.*.js"],
   "exclude": ["node_modules", "public"]

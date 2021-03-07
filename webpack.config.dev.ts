@@ -7,10 +7,7 @@ import DotEnvPlugin from "dotenv-webpack";
 
 const webpackConfig: Configuration = {
   mode: "development",
-  entry: [
-    "webpack-hot-middleware/client?reload=true&timeout=1000",
-    "./src/frontend/index.dev.tsx",
-  ],
+  entry: ["./src/index.dev.tsx"],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     plugins: [
@@ -25,18 +22,20 @@ const webpackConfig: Configuration = {
   },
   devtool: "inline-source-map",
   target: "web",
-  cache: {
-    type: "filesystem",
-    buildDependencies: {
-      config: [__filename],
-    },
-  },
   module: {
     rules: [
+      // {
+      //   test: /src\/worker\/index.ts$/,
+      //   loader: "comlink-loader",
+      //   options: {
+      //     singleton: true,
+      //   },
+      // },
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
         options: {
+          transpileOnly: true,
           configFile: "tsconfig.build.json",
         },
         exclude: /public/,
@@ -49,7 +48,7 @@ const webpackConfig: Configuration = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "src/frontend/index.html" }),
+    new HtmlWebpackPlugin({ template: "src/index.html" }),
     new HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
     new DotEnvPlugin(),

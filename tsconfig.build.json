@@ -2,5 +2,9 @@
   "extends": "./tsconfig.json",
   "include": ["src"],
   "exclude": ["public", "tests"],
-  "files": ["src/backend/index.ts"]
+  "files": ["src/index.tsx"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext"
+  }
 }

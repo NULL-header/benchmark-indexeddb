@@ -6,18 +6,20 @@
   "scripts": {
     "build": "webpack -c webpack.config.ts",
     "clean": "ls -d public/* | grep -vE \"^.empty$\" | xargs rm -r",
-    "dev": "ts-node-dev -P tsconfig.build.json -r tsconfig-paths/register src/backend/index.dev.ts",
+    "dev": "webpack serve -c webpack.config.dev.ts",
     "peerCheck": "check-peer-dependencies --install",
     "sortPkg": "sort-package-json package.json"
   },
   "dependencies": {
     "@types/express": "^4.17.11",
     "@types/node": "^14.14.31",
+    "comlink-loader": "^2.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.1.5"
+    "typescript": "^4.1.5",
+    "use-reducer-async": "^2.0.1"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.3.3",
@@ -33,9 +35,13 @@
     "@types/react-dom": "^17.0.1",
     "@types/webpack-dev-middleware": "^4.1.0",
     "@types/webpack-hot-middleware": "^2.25.3",
+    "@types/worker-plugin": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
+    "benchmark": "^2.1.4",
     "check-peer-dependencies": "^4.0.0",
+    "comlink": "^4.3.0",
+    "dexie": "^3.0.3",
     "dotenv-webpack": "^6.0.2",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -71,6 +77,8 @@
     "webpack": "^5.23.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-middleware": "^4.1.0",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "worker-plugin": "^5.0.0"
   }
 }

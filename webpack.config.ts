@@ -6,7 +6,7 @@ import DotEnvPlugin from "dotenv-webpack";
 
 const webpackConfig: Configuration = {
   mode: "production",
-  entry: "./src/frontend/index.tsx",
+  entry: "./src/index.tsx",
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     plugins: [
@@ -17,6 +17,7 @@ const webpackConfig: Configuration = {
     path: path.join(__dirname, "/public"),
     filename: "bundle.js",
     publicPath: "/",
+    libraryTarget: "umd",
   },
   target: "web",
   cache: {
@@ -31,7 +32,8 @@ const webpackConfig: Configuration = {
         test: /\.tsx?$/,
         loader: "ts-loader",
         options: {
-          configFile: path.resolve(__dirname, "./tsconfig.build.json"),
+          transpileOnly: true,
+          configFile: "tsconfig.build.json",
         },
         exclude: /public/,
       },
@@ -44,7 +46,7 @@ const webpackConfig: Configuration = {
   },
   plugins: [
     new DotEnvPlugin(),
-    new HtmlWebpackPlugin({ template: "src/frontend/index.html" }),
+    new HtmlWebpackPlugin({ template: "src/index.html" }),
   ],
   externals: {
     react: "React",

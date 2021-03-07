@@ -44,5 +44,6 @@ module.exports = {
     "react/require-default-props": "off",
     "func-names": "off",
     "react/jsx-props-no-spreading": "off",
+    "import/extensions": "off",
   },
 };
